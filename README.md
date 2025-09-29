@@ -2,7 +2,7 @@
 
 The **Blinky** project is a simple example that can be used to verify the
 basic tool setup.
-It provides as example forRTX5 on STM32 Nucleo-L476RG for RTOS Views plugin, see https://github.com/mcu-debug/rtos-views
+It provides as example for RTX5 on STM32 Nucleo-L476RG for RTOS Views plugin, see https://github.com/mcu-debug/rtos-views
 
 It is compliant to the Cortex Microcontroller Software Interface Standard (CMSIS)
 and uses the CMSIS-RTOS2 API interface for RTOS functionality. The CMSIS-RTOS2 API
