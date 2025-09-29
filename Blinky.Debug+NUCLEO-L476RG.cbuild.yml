@@ -1,0 +1,538 @@
+build:
+  generated-by: csolution version 2.9.0
+  solution: Blinky.csolution.yml
+  project: Blinky.cproject.yml
+  context: Blinky.Debug+NUCLEO-L476RG
+  compiler: AC6
+  board: STMicroelectronics::NUCLEO-L476RG:Rev.C
+  board-pack: Keil::NUCLEO-L476RG_BSP@1.0.0
+  board-books:
+    - name: https://www.st.com/en/evaluation-tools/nucleo-l476rg.html
+      title: NUCLEO-L476RG Board
+      category: overview
+    - name: https://www.st.com/resource/en/data_brief/nucleo-l476rg.pdf
+      title: Data Brief
+      category: overview
+    - name: https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf
+      title: User Manual
+      category: manual
+    - name: https://www.st.com/resource/en/schematic_pack/mb1136-default-c03_schematic.pdf
+      title: Schematics
+      category: schematic
+    - name: ${CMSIS_PACK_ROOT}/Keil/NUCLEO-L476RG_BSP/1.0.0/Documents/README.md
+      title: Guide
+      category: other
+  device: STMicroelectronics::STM32L476RGTx
+  device-pack: Keil::STM32L4xx_DFP@3.0.0
+  device-books:
+    - name: https://www.st.com/resource/en/reference_manual/rm0351-stm32l47xxx-stm32l48xxx-stm32l49xxx-and-stm32l4axxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
+      title: STM32L47xxx, STM32L48xxx, STM32L49xxx and STM32L4Axxx Reference Manual
+    - name: https://www.st.com/resource/en/datasheet/stm32l476je.pdf
+      title: STM32L476xx Data Sheet
+    - name: https://developer.arm.com/documentation/dui0553/latest/
+      title: Cortex-M4 Generic User Guide
+  dbgconf:
+    - file: .cmsis/Blinky+NUCLEO-L476RG.dbgconf
+      version: 0.0.0
+      status: missing file
+  processor:
+    dsp: on
+    endian: little
+    fpu: sp
+    core: Cortex-M4
+  packs:
+    - pack: ARM::CMSIS-Compiler@2.1.0
+      path: ${CMSIS_PACK_ROOT}/ARM/CMSIS-Compiler/2.1.0
+    - pack: ARM::CMSIS-Driver_STM32@1.2.0
+      path: ${CMSIS_PACK_ROOT}/ARM/CMSIS-Driver_STM32/1.2.0
+    - pack: ARM::CMSIS-RTX@5.9.0
+      path: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0
+    - pack: ARM::CMSIS@6.2.0
+      path: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0
+    - pack: Keil::NUCLEO-L476RG_BSP@1.0.0
+      path: ${CMSIS_PACK_ROOT}/Keil/NUCLEO-L476RG_BSP/1.0.0
+    - pack: Keil::STM32L4xx_DFP@3.0.0
+      path: ${CMSIS_PACK_ROOT}/Keil/STM32L4xx_DFP/3.0.0
+  optimize: debug
+  debug: on
+  misc:
+    ASM:
+      - -gdwarf-5
+      - -masm=auto
+    C:
+      - -gdwarf-5
+      - -std=gnu11
+      - -Wno-macro-redefined
+      - -Wno-pragma-pack
+      - -Wno-parentheses-equality
+      - -Wno-license-management
+    CPP:
+      - -gdwarf-5
+      - -Wno-macro-redefined
+      - -Wno-pragma-pack
+      - -Wno-parentheses-equality
+      - -Wno-license-management
+    Link:
+      - --entry=Reset_Handler
+      - --info summarysizes
+      - --summary_stderr
+      - --diag_suppress=L6314W
+  define:
+    - USE_HAL_DRIVER
+    - STM32L476xx
+    - STM32L476xx
+    - _RTE_
+  define-asm:
+    - STM32L476xx
+    - _RTE_
+  add-path:
+    - STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Inc
+    - STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Inc/Legacy
+    - STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/CMSIS/Device/ST/STM32L4xx/Include
+    - STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Inc
+    - STM32CubeMX/NUCLEO-L476RG/MX_Device
+    - RTE/CMSIS
+    - RTE/_Debug_NUCLEO-L476RG
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS-Compiler/2.1.0/include
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS-Driver_STM32/1.2.0/Drivers
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Include
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Core/Include
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Driver/Include
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Driver/VIO/Include
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include
+  add-path-asm:
+    - RTE/CMSIS
+    - RTE/_Debug_NUCLEO-L476RG
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS-Compiler/2.1.0/include
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS-Driver_STM32/1.2.0/Drivers
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Include
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Core/Include
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Driver/Include
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Driver/VIO/Include
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include
+  output-dirs:
+    intdir: tmp
+    outdir: out/Blinky/NUCLEO-L476RG/Debug
+    rtedir: RTE
+  output:
+    - type: elf
+      file: Blinky.axf
+    - type: hex
+      file: Blinky.hex
+    - type: map
+      file: Blinky.axf.map
+  components:
+    - component: ARM::CMSIS-Compiler:CORE@1.1.0
+      condition: ARMCC CortexDevice
+      from-pack: ARM::CMSIS-Compiler@2.1.0
+      selected-by: CMSIS-Compiler:CORE
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-Compiler/2.1.0/source/armcc/retarget_io.c
+          category: sourceC
+          version: 1.1.0
+    - component: ARM::CMSIS-Compiler:STDERR:Custom@1.1.0
+      condition: CORE
+      from-pack: ARM::CMSIS-Compiler@2.1.0
+      selected-by: CMSIS-Compiler:STDERR:Custom
+      implements: CMSIS-Compiler:STDERR@1.1.0
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-Compiler/2.1.0/template/stdio/stderr_user.c
+          category: sourceC
+          attr: template
+          version: 1.1.0
+          select: STDERR User Template
+    - component: ARM::CMSIS-Compiler:STDIN:Custom@1.1.0
+      condition: CORE
+      from-pack: ARM::CMSIS-Compiler@2.1.0
+      selected-by: CMSIS-Compiler:STDIN:Custom
+      implements: CMSIS-Compiler:STDIN@1.1.0
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-Compiler/2.1.0/template/stdio/stdin_user.c
+          category: sourceC
+          attr: template
+          version: 1.1.0
+          select: STDIN User Template
+    - component: ARM::CMSIS-Compiler:STDOUT:Custom@1.1.0
+      condition: CORE
+      from-pack: ARM::CMSIS-Compiler@2.1.0
+      selected-by: CMSIS-Compiler:STDOUT:Custom
+      implements: CMSIS-Compiler:STDOUT@1.1.0
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-Compiler/2.1.0/template/stdio/stdout_user.c
+          category: sourceC
+          attr: template
+          version: 1.1.0
+          select: STDOUT User Template
+    - component: ARM::CMSIS:CORE@6.1.1
+      condition: ARMv6_7_8-M Device
+      from-pack: ARM::CMSIS@6.2.0
+      selected-by: CMSIS:CORE
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Core/Include
+          category: include
+          version: 6.1.1
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Core/Include/tz_context.h
+          category: header
+          version: 6.1.1
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Core/Template/ARMv8-M/main_s.c
+          category: sourceC
+          attr: template
+          version: 1.1.1
+          select: Secure mode 'main' module for ARMv8-M
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Core/Template/ARMv8-M/tz_context.c
+          category: sourceC
+          attr: template
+          version: 1.1.1
+          select: RTOS Context Management (TrustZone for ARMv8-M)
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Documentation/html/Core/index.html
+          category: doc
+          version: 6.1.1
+    - component: ARM::CMSIS:OS Tick:SysTick@1.0.5
+      condition: OS Tick SysTick
+      from-pack: ARM::CMSIS@6.2.0
+      selected-by: CMSIS:OS Tick:SysTick
+      implements: CMSIS:OS Tick@1.0.1
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Source/os_systick.c
+          category: sourceC
+          version: 1.0.5
+    - component: ARM::CMSIS:RTOS2:Keil RTX5&Source@5.9.0
+      condition: RTX5
+      from-pack: ARM::CMSIS-RTX@5.9.0
+      selected-by: ARM::CMSIS:RTOS2:Keil RTX5&Source@5.9.0
+      implements: CMSIS:RTOS2@2.3.0
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Documentation/index.html
+          category: doc
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Include/rtx_os.h
+          category: header
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/RTX5.scvd
+          category: other
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Source/GCC/irq_armv7m.S
+          category: source
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Source/rtx_delay.c
+          category: source
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Source/rtx_evflags.c
+          category: source
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Source/rtx_evr.c
+          category: source
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Source/rtx_kernel.c
+          category: source
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Source/rtx_lib.c
+          category: source
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Source/rtx_memory.c
+          category: source
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Source/rtx_mempool.c
+          category: source
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Source/rtx_msgqueue.c
+          category: source
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Source/rtx_mutex.c
+          category: source
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Source/rtx_semaphore.c
+          category: source
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Source/rtx_system.c
+          category: source
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Source/rtx_thread.c
+          category: source
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Source/rtx_timer.c
+          category: source
+          version: 5.9.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Template/Events.c
+          category: source
+          attr: template
+          version: 2.0.0
+          select: RTX Events
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Template/MemPool.c
+          category: source
+          attr: template
+          version: 2.0.0
+          select: RTX Memory Pool
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Template/MsgQueue.c
+          category: source
+          attr: template
+          version: 2.0.0
+          select: RTX Message Queue
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Template/Mutex.c
+          category: source
+          attr: template
+          version: 2.0.0
+          select: RTX Mutex
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Template/Semaphore.c
+          category: source
+          attr: template
+          version: 2.0.0
+          select: RTX Semaphore
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Template/Thread.c
+          category: source
+          attr: template
+          version: 2.0.0
+          select: RTX Thread
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Template/Timer.c
+          category: source
+          attr: template
+          version: 2.0.1
+          select: RTX Timer
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Template/main.c
+          category: source
+          attr: template
+          version: 2.1.0
+          select: RTX 'main' function
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-RTX/5.9.0/Template/svc_user.c
+          category: source
+          attr: template
+          version: 1.0.0
+          select: RTX SVC User Table
+        - file: RTE/CMSIS/RTX_Config.c
+          category: source
+          attr: config
+          version: 5.2.0
+        - file: RTE/CMSIS/RTX_Config.h
+          category: header
+          attr: config
+          version: 5.6.0
+    - component: Keil::CMSIS Driver:GPIO@1.2.0
+      condition: CMSIS Driver requirements
+      from-pack: ARM::CMSIS-Driver_STM32@1.2.0
+      selected-by: CMSIS Driver:GPIO
+      implements: CMSIS Driver:GPIO@1.0.0
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-Driver_STM32/1.2.0/Documentation/html/gpio_stm32.html
+          category: doc
+          version: 1.2.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-Driver_STM32/1.2.0/Drivers/GPIO_STM32.c
+          category: source
+          version: 1.2.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-Driver_STM32/1.2.0/Drivers/GPIO_STM32.h
+          category: header
+          version: 1.2.0
+    - component: Keil::CMSIS Driver:USART@3.0.0
+      condition: CMSIS Driver requirements
+      from-pack: ARM::CMSIS-Driver_STM32@1.2.0
+      selected-by: CMSIS Driver:USART
+      implements: CMSIS Driver:USART@2.4.0
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-Driver_STM32/1.2.0/Documentation/html/usart_stm32.html
+          category: doc
+          version: 3.0.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-Driver_STM32/1.2.0/Drivers/USART_STM32.c
+          category: source
+          version: 3.0.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-Driver_STM32/1.2.0/Drivers/USART_STM32.h
+          category: header
+          version: 3.0.0
+    - component: Keil::CMSIS Driver:VIO:Board@1.0.0
+      condition: NUCLEO-L476RG GPIO
+      from-pack: Keil::NUCLEO-L476RG_BSP@1.0.0
+      selected-by: CMSIS Driver:VIO:Board
+      implements: CMSIS Driver:VIO@1.0.0
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/NUCLEO-L476RG_BSP/1.0.0/CMSIS/Driver/vio_NUCLEO-L476RG.c
+          category: source
+          version: 1.0.0
+    - component: Keil::Device:CubeMX@1.0.0
+      condition: STM32L4 CMSIS
+      from-pack: Keil::STM32L4xx_DFP@3.0.0
+      selected-by: Device:CubeMX
+      files:
+        - file: https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/CubeMX.md
+          category: doc
+          version: 1.0.0
+      generator:
+        id: CubeMX
+        path: STM32CubeMX/NUCLEO-L476RG/Blinky.cgen.yml
+  apis:
+    - api: CMSIS Driver:GPIO@1.0.0
+      from-pack: ARM::CMSIS@6.2.0
+      implemented-by: Keil::CMSIS Driver:GPIO@1.2.0
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Documentation/html/Driver/group__gpio__interface__gr.html
+          category: doc
+          version: 1.0.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Driver/Include/Driver_GPIO.h
+          category: header
+          version: 1.0.0
+    - api: CMSIS Driver:USART@2.4.0
+      from-pack: ARM::CMSIS@6.2.0
+      implemented-by: Keil::CMSIS Driver:USART@3.0.0
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Documentation/html/Driver/group__usart__interface__gr.html
+          category: doc
+          version: 2.4.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Driver/Include/Driver_USART.h
+          category: header
+          version: 2.4.0
+    - api: CMSIS Driver:VIO@1.0.0
+      from-pack: ARM::CMSIS@6.2.0
+      implemented-by: Keil::CMSIS Driver:VIO:Board@1.0.0
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Documentation/html/Driver/group__vio__interface__gr.html
+          category: doc
+          version: 1.0.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Driver/VIO/Include/cmsis_vio.h
+          category: header
+          version: 1.0.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Driver/VIO/cmsis_vio.scvd
+          category: other
+          version: 1.0.0
+    - api: CMSIS-Compiler:STDERR@1.1.0
+      condition: CortexDevice
+      from-pack: ARM::CMSIS-Compiler@2.1.0
+      implemented-by: ARM::CMSIS-Compiler:STDERR:Custom@1.1.0
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-Compiler/2.1.0/include/retarget_stderr.h
+          category: header
+          version: 1.1.0
+    - api: CMSIS-Compiler:STDIN@1.1.0
+      condition: CortexDevice
+      from-pack: ARM::CMSIS-Compiler@2.1.0
+      implemented-by: ARM::CMSIS-Compiler:STDIN:Custom@1.1.0
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-Compiler/2.1.0/include/retarget_stdin.h
+          category: header
+          version: 1.1.0
+    - api: CMSIS-Compiler:STDOUT@1.1.0
+      condition: CortexDevice
+      from-pack: ARM::CMSIS-Compiler@2.1.0
+      implemented-by: ARM::CMSIS-Compiler:STDOUT:Custom@1.1.0
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-Compiler/2.1.0/include/retarget_stdout.h
+          category: header
+          version: 1.1.0
+    - api: CMSIS:OS Tick@1.0.1
+      from-pack: ARM::CMSIS@6.2.0
+      implemented-by: ARM::CMSIS:OS Tick:SysTick@1.0.5
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include/os_tick.h
+          category: header
+          version: 1.0.1
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Documentation/html/RTOS2/group__CMSIS__RTOS__TickAPI.html
+          category: doc
+          version: 1.0.1
+    - api: CMSIS:RTOS2@2.3.0
+      from-pack: ARM::CMSIS@6.2.0
+      implemented-by: ARM::CMSIS:RTOS2:Keil RTX5&Source@5.9.0
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/Documentation/html/RTOS2/group__CMSIS__RTOS.html
+          category: doc
+          version: 2.3.0
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/6.2.0/CMSIS/RTOS2/Include/cmsis_os2.h
+          category: header
+          version: 2.3.0
+  linker:
+    script: RTE/Device/STM32L476RGTx/ac6_linker_script.sct.src
+    regions: RTE/Device/STM32L476RGTx/regions_NUCLEO-L476RG.h
+  groups:
+    - group: Documentation
+      files:
+        - file: README.md
+          category: doc
+    - group: Source Files
+      files:
+        - file: Blinky.c
+          category: sourceC
+        - file: retarget_stdio.c
+          category: sourceC
+          define:
+            - RETARGET_STDIO_UART: 2
+    - group: CubeMX
+      files:
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Src/main.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Src/stm32l4xx_it.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Src/stm32l4xx_hal_msp.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Src/stm32l4xx_hal_timebase_tim.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/MDK-ARM/startup_stm32l476xx.s
+          category: sourceAsm
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Src/system_stm32l4xx.c
+          category: sourceC
+    - group: STM32 HAL Driver
+      files:
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c
+          category: sourceC
+        - file: STM32CubeMX/NUCLEO-L476RG/STM32CubeMX/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c
+          category: sourceC
+  constructed-files:
+    - file: RTE/_Debug_NUCLEO-L476RG/RTE_Components.h
+      category: header
+  licenses:
+    - license: Apache-2.0
+      packs:
+        - pack: ARM::CMSIS-Compiler@2.1.0
+        - pack: ARM::CMSIS-Driver_STM32@1.2.0
+        - pack: ARM::CMSIS-RTX@5.9.0
+        - pack: ARM::CMSIS@6.2.0
+        - pack: Keil::NUCLEO-L476RG_BSP@1.0.0
+        - pack: Keil::STM32L4xx_DFP@3.0.0
+      components:
+        - component: ARM::CMSIS-Compiler:CORE@1.1.0
+        - component: ARM::CMSIS-Compiler:STDERR:Custom@1.1.0
+        - component: ARM::CMSIS-Compiler:STDIN:Custom@1.1.0
+        - component: ARM::CMSIS-Compiler:STDOUT:Custom@1.1.0
+        - component: ARM::CMSIS:CORE@6.1.1
+        - component: ARM::CMSIS:OS Tick:SysTick@1.0.5
+        - component: ARM::CMSIS:RTOS2:Keil RTX5&Source@5.9.0
+        - component: CMSIS Driver:GPIO(API)
+        - component: CMSIS Driver:USART(API)
+        - component: CMSIS Driver:VIO(API)
+        - component: CMSIS-Compiler:STDERR(API)
+        - component: CMSIS-Compiler:STDIN(API)
+        - component: CMSIS-Compiler:STDOUT(API)
+        - component: CMSIS:OS Tick(API)
+        - component: CMSIS:RTOS2(API)
+        - component: Keil::CMSIS Driver:GPIO@1.2.0
+        - component: Keil::CMSIS Driver:USART@3.0.0
+        - component: Keil::CMSIS Driver:VIO:Board@1.0.0
+        - component: Keil::Device:CubeMX@1.0.0

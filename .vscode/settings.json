@@ -1,0 +1,12 @@
+{
+    "clangd.arguments": [
+        "--compile-commands-dir=/Users/thode01/work/github/Blinky_NucleoL476_RTX/out/Blinky/NUCLEO-L476RG/Debug"
+    ],
+    "files.associations": {
+        "main.h": "c",
+        "rtx_core_c.h": "c",
+        "rtx_def.h": "c",
+        "cmsis_vio.h": "c"
+    },
+    "cmake.sourceDirectory": "/Users/thode01/temp/stm32/Blinky_NucleoL476_2/tmp"
+}
