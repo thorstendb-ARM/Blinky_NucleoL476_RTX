@@ -26,32 +26,10 @@
 
 static osThreadId_t tid_thrLED;         // Thread id of thread: LED
 static osThreadId_t tid_thrButton;      // Thread id of thread: Button
-static osThreadId_t tid_thrDoNothing;   // Thread id of thread: DoNothing
-static osThreadId_t tid_thrAnotherDummy; // Thread id of thread: AnotherDummy
-static osThreadId_t tid_thrNoAttr;       // Thread id of thread: NoAttr
+static osThreadId_t tid_thrWorker;      // Thread id of thread: Worker
+static osThreadId_t tid_thrDisplay;     // Thread id of thread: Display
+static osThreadId_t tid_thrNoAttr;      // Thread id of thread: NoAttr
 
-const char text[16] = "Blinky example"; 
-unsigned int idx = 0;
-
-typedef struct test_s {
-  const struct test_s* next;
-  const char* text;
-  unsigned int* idx;
-} test_t;
-
-test_t test = {
-  .text = text,
-  .idx = &idx,
-  .next = 0
-};
-
-test_t test2 = {
-  .text = text,
-  .idx = &idx,
-  .next = &test
-};
-
-const test_t *test_ptr = &test2;
 
 /*-----------------------------------------------------------------------------
   thrLED: blink LED
@@ -67,17 +45,6 @@ const test_t *test_ptr = &test2;
   uint32_t active_flag = 0U;
   
   (void)argument;
-  printf(text);
-  idx++;
-  if (idx >= sizeof(text)) {
-    idx = 0;
-  }
-
-  const char* test_ptr_text = test_ptr->text;
-
-  if(test_ptr->idx != 0) {
-    printf("test_ptr->idx = %u, %s\n", *test_ptr->idx, test_ptr_text);
-  }
 
   for (;;) {
     if (osThreadFlagsWait(1U, osFlagsWaitAny, 0U) == 1U) {
@@ -104,11 +71,12 @@ const test_t *test_ptr = &test2;
 /*-----------------------------------------------------------------------------
   thrButton: check Button state
  *----------------------------------------------------------------------------*/
- osThreadAttr_t attr_thrBUT = {
+ osThreadAttr_t attr_thrButton = {
   .name = "Button",
   .priority = osPriorityNormal,
   .stack_size = 512U
  };
+
 static __NO_RETURN void thrButton (void *argument) {
   uint32_t last = 0U;
   uint32_t state;
@@ -128,14 +96,14 @@ static __NO_RETURN void thrButton (void *argument) {
 }
 
 /*-----------------------------------------------------------------------------
-  thrDoNothing: do nothing
+  thrWorker: do nothing
  *----------------------------------------------------------------------------*/
- osThreadAttr_t attr_thrDoNothing = {
-  .name = "DoNothing",
+ osThreadAttr_t attr_thrWorker = {
+  .name = "Worker",
   .priority = osPriorityNormal,
   .stack_size = 512U
  };
-static __NO_RETURN void thrDoNothing (void *argument) {
+static __NO_RETURN void thrWorker (void *argument) {
   uint32_t last = 0U;
   uint32_t state;
 
@@ -149,12 +117,12 @@ static __NO_RETURN void thrDoNothing (void *argument) {
 /*-----------------------------------------------------------------------------
   thrAnotherDummy: do nothing
  *----------------------------------------------------------------------------*/
- osThreadAttr_t attr_thrAnotherDummy = {
-  .name = "AnotherDummy",
+ osThreadAttr_t attr_thrDisplay = {
+  .name = "Display",
   .priority = osPriorityNormal,
   .stack_size = 512U
  };
-static __NO_RETURN void thrAnotherDummy (void *argument) {
+static __NO_RETURN void thrDisplay (void *argument) {
   uint32_t last = 0U;
   uint32_t state;
 
@@ -179,7 +147,6 @@ static __NO_RETURN void thrNoAttr (void *argument) {
   }
 }
 
-
 /*-----------------------------------------------------------------------------
  * Application main thread
  *----------------------------------------------------------------------------*/
@@ -187,11 +154,11 @@ __NO_RETURN void app_main_thread (void *argument) {
 
   printf("Blinky example\n");
 
-  tid_thrLED = osThreadNew(thrLED, NULL, &attr_thrLED);         // Create LED thread
-  tid_thrButton = osThreadNew(thrButton, NULL, &attr_thrBUT);   // Create Button thread
-  tid_thrDoNothing = osThreadNew(thrDoNothing, NULL, &attr_thrDoNothing);   // Create DoNothing thread
-  tid_thrAnotherDummy = osThreadNew(thrAnotherDummy, NULL, &attr_thrAnotherDummy);   // Create AnotherDummy thread
-  tid_thrNoAttr = osThreadNew(thrNoAttr, NULL, NULL);   // Create NoAttr thread
+  tid_thrLED = osThreadNew(thrLED, NULL, &attr_thrLED);             // Create LED thread
+  tid_thrButton = osThreadNew(thrButton, NULL, &attr_thrButton);    // Create Button thread
+  tid_thrWorker = osThreadNew(thrWorker, NULL, &attr_thrWorker);    // Create Worker thread
+  tid_thrDisplay = osThreadNew(thrDisplay, NULL, &attr_thrDisplay); // Create Display thread
+  tid_thrNoAttr = osThreadNew(thrNoAttr, NULL, NULL);               // Create NoAttr thread
   
   for (;;) {                            // Loop forever
     osDelay(100U);
