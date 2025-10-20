@@ -34,7 +34,6 @@ build:
   dbgconf:
     - file: .cmsis/Blinky+NUCLEO-L476RG.dbgconf
       version: 0.0.0
-      status: missing file
   processor:
     dsp: on
     endian: little
