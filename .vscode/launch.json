@@ -1,19 +1,6 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
-            "name": "Debug with ST-Link",
-            "cwd": "${workspaceFolder}",
-            "executable": "./out/Blinky/NUCLEO-L476RG/Debug/Blinky.axf",
-            "request": "launch",
-            "type": "cortex-debug",
-            "runToEntryPoint": "main",
-            "showDevDebugOutput": "none",
-            "servertype": "stlink"
-        },
         {
             "name": "STLink@pyOCD (launch)",
             "type": "gdbtarget",
@@ -21,58 +8,59 @@
             "cwd": "${workspaceFolder}/",
             "program": "out/Blinky/NUCLEO-L476RG/Debug/Blinky.axf",
             "gdb": "arm-none-eabi-gdb",
+            "preLaunchTask": "CMSIS Load",
             "initCommands": [
-                "load out/Blinky/NUCLEO-L476RG/Debug/Blinky.hex",
                 "monitor reset halt",
                 "tbreak main"
             ],
             "customResetCommands": [
-                "monitor reset halt"
+                "monitor reset halt",
+                "tbreak main",
+                "continue"
             ],
             "target": {
                 "server": "pyocd",
                 "serverParameters": [
+                    "gdbserver",
                     "--probe",
                     "stlink:",
                     "--connect",
-                    "attach"
+                    "attach",
+                    "--cbuild-run",
+                    "${command:cmsis-csolution.getCbuildRunFile}",
+                    "--quiet",
+                    "--log",
+                    "*.cbuild_run,*server=info"
                 ],
                 "port": "3333"
             },
             "cmsis": {
-                "cbuildRunFile": "${command:cmsis-csolution.getCbuildRunFile}"
+                "cbuildRunFile": "${command:cmsis-csolution.getCbuildRunFile}",
+                "updateConfiguration": "auto"
             }
         },
         {
-            "name": "STLink@pyOCD (prog)",
+            "name": "STLink@pyOCD (attach)",
             "type": "gdbtarget",
-            "request": "launch",
-            //"debugServer": 4711,
+            "request": "attach",
             "cwd": "${workspaceFolder}/",
             "program": "out/Blinky/NUCLEO-L476RG/Debug/Blinky.axf",
             "gdb": "arm-none-eabi-gdb",
             "initCommands": [
-                "load out/Blinky/NUCLEO-L476RG/Debug/Blinky.hex",
-                "monitor reset halt",
-                "tbreak main"
+                ""
             ],
             "customResetCommands": [
-                "monitor reset halt"
+                "monitor reset halt",
+                "tbreak main",
+                "continue"
             ],
             "target": {
-                "server": "pyocd",
-                "serverParameters": [
-                    "--probe",
-                    "stlink:",
-                    "--connect",
-                    "attach"
-                ],
                 "port": "3333"
             },
             "cmsis": {
-                "cbuildRunFile": "${command:cmsis-csolution.getCbuildRunFile}"
+                "cbuildRunFile": "${command:cmsis-csolution.getCbuildRunFile}",
+                "updateConfiguration": "auto"
             }
         }
-
     ]
 }
