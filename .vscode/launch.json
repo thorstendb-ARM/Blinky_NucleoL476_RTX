@@ -5,26 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C++ Extension Light",
-            "type": "cppdbg",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "program": "${workspaceFolder}/out/Blinky/NUCLEO-L476RG/Debug/Blinky.axf",
-            "stopAtConnect": true,
-            "miDebuggerPath": "/Users/thode01/.vcpkg/artifacts/2139c4c6/compilers.arm.arm.none.eabi.gcc/14.2.1/bin/arm-none-eabi-gdb",
-            "MIMode": "gdb",
-            "miDebuggerServerAddress": "localhost:3333",
-            "debugServerPath": "/Users/thode01/.vscode/extensions/arm.vscode-cmsis-debugger-0.3.1-darwin-arm64/tools/pyocd/pyocd",
-            "debugServerArgs": "gdbserver --port 3333 --cbuild-run /Users/thode01/temp/stm32/Blinky_NucleoL476_2/Blinky+NUCLEO-L476RG.cbuild-run.yml",
-            "serverStarted": "GDB server started on port",
-            "filterStderr": true,
-            "targetArchitecture": "arm",
-            "symbolLoadInfo": {
-                "loadAll": true,
-                "exceptionList": ""
-            }
-        },
-        {
             "name": "Debug with ST-Link",
             "cwd": "${workspaceFolder}",
             "executable": "./out/Blinky/NUCLEO-L476RG/Debug/Blinky.axf",
@@ -67,7 +47,7 @@
             "name": "STLink@pyOCD (prog)",
             "type": "gdbtarget",
             "request": "launch",
-            "debugServer": 4711,
+            //"debugServer": 4711,
             "cwd": "${workspaceFolder}/",
             "program": "out/Blinky/NUCLEO-L476RG/Debug/Blinky.axf",
             "gdb": "arm-none-eabi-gdb",
