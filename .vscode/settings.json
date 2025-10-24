@@ -8,5 +8,6 @@
         "rtx_def.h": "c",
         "cmsis_vio.h": "c"
     },
-    "cmake.sourceDirectory": "/Users/thode01/temp/stm32/Blinky_NucleoL476_2/tmp"
+    "cmake.sourceDirectory": "/Users/thode01/temp/stm32/Blinky_NucleoL476_2/tmp",
+    "debug.hideSlowPreLaunchWarning": true
 }

@@ -1,0 +1,21 @@
+build-idx:
+  generated-by: csolution version 2.11.0
+  cdefault: ${CMSIS_COMPILER_ROOT}/cdefault.yml
+  csolution: Blinky.csolution.yml
+  cbuild-run: out/Blinky+NUCLEO-L476RG.cbuild-run.yml
+  tmpdir: tmp
+  cprojects:
+    - cproject: Blinky.cproject.yml
+  cbuilds:
+    - cbuild: out/Blinky/NUCLEO-L476RG/Debug/Blinky.Debug+NUCLEO-L476RG.cbuild.yml
+      project: Blinky
+      configuration: .Debug+NUCLEO-L476RG
+      clayers:
+        - clayer: STM32CubeMX/NUCLEO-L476RG/Blinky.cgen.yml
+      messages:
+        info:
+          - Blinky.cbuild-pack.yml - file is already up-to-date
+          - Blinky+NUCLEO-L476RG.cbuild-run.yml - file is already up-to-date
+          - Blinky.Debug+NUCLEO-L476RG.cbuild.yml - file is already up-to-date
+      packs-unused:
+        - pack: ARM::CMSIS-FreeRTOS@11.2.0
